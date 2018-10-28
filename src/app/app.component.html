@@ -1,21 +1,101 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<form [formGroup]="form">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h1>Förpackningar</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <svg class="img-fluid"
+             [attr.viewBox]="viewBox$ | async"
+             class="bg-light"
+             style="max-height: 400px"
+             preserveAspectRatio="xMidYMid meet"
+             width="500">
+          <g *ngFor="let bin of form.get('bins').value;index as idx">
+            <rect [attr.x]="bin.x"
+                  [attr.y]="bin.y"
+                  [attr.width]="bin.width"
+                  [attr.height]="bin.height"
+                  [ngClass]="bin.color">
+            </rect>
+            <text [attr.x]="bin.x"
+                  [attr.y]="bin.y + 16"
+                  style="fill:#333"
+                  [textContent]="bin.width + '*' + bin.height"></text>
+          </g>
+        </svg>
+      </div>
+    </div>
 
-<router-outlet></router-outlet>
+    <ng-container formArrayName="bins"
+                  *ngFor="let bin of form.get('bins').controls; index as idx">
+      <div class="form-row"
+           [ngClass]="bin.get('color').value"
+           [formGroupName]="idx">
+        <div class="col-sm-12 col-md-2">
+          <label>Bredd</label>
+          <input class="form-control"
+                 type="number"
+                 formControlName="width">
+        </div>
+        <div class="col-sm-12 col-md-2">
+          <label>Höjd</label>
+          <input class="form-control"
+                 type="number"
+                 formControlName="height">
+        </div>
+        <div class="col">
+          <button class="btn btn-danger mt-4"
+                  (click)="removeBin(idx)">
+            <!-- Generator: Adobe Illustrator 19.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+            <svg version="1.1"
+                 id="Layer_1"
+                 xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink"
+                 x="0px"
+                 y="0px"
+                 width="24px"
+                 height="24px"
+                 viewBox="0 0 92 92"
+                 enable-background="new 0 0 92 92"
+                 xml:space="preserve">
+              <path id="XMLID_1348_"
+                    d="M78.4,30.4l-3.1,57.8c-0.1,2.1-1.9,3.8-4,3.8H20.7c-2.1,0-3.9-1.7-4-3.8l-3.1-57.8
+	c-0.1-2.2,1.6-4.1,3.8-4.2c2.2-0.1,4.1,1.6,4.2,3.8l2.9,54h43.1l2.9-54c0.1-2.2,2-3.9,4.2-3.8C76.8,26.3,78.5,28.2,78.4,30.4z
+	 M89,17c0,2.2-1.8,4-4,4H7c-2.2,0-4-1.8-4-4s1.8-4,4-4h22V4c0-1.9,1.3-3,3.2-3h27.6C61.7,1,63,2.1,63,4v9h22C87.2,13,89,14.8,89,17z
+	 M36,13h20V8H36V13z M37.7,78C37.7,78,37.7,78,37.7,78c2,0,3.5-1.9,3.5-3.8l-1-43.2c0-1.9-1.6-3.5-3.6-3.5c-1.9,0-3.5,1.6-3.4,3.6
+	l1,43.3C34.2,76.3,35.8,78,37.7,78z M54.2,78c1.9,0,3.5-1.6,3.5-3.5l1-43.2c0-1.9-1.5-3.6-3.4-3.6c-2,0-3.5,1.5-3.6,3.4l-1,43.2
+	C50.6,76.3,52.2,78,54.2,78C54.1,78,54.1,78,54.2,78z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </ng-container>
+    <div class="row mt-3">
+      <div class="col">
+        <button class="btn btn-success"
+                (click)="addBin()">
+          Lägg till förpackning
+          <!-- Generator: Adobe Illustrator 19.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+          <svg version="1.1"
+               id="Layer_1"
+               xmlns="http://www.w3.org/2000/svg"
+               xmlns:xlink="http://www.w3.org/1999/xlink"
+               x="0px"
+               y="0px"
+               width="24px"
+               height="24px"
+               viewBox="0 0 92 92"
+               enable-background="new 0 0 92 92"
+               xml:space="preserve">
+            <path id="XMLID_933_"
+                  d="M72.5,46.5c0,2.5-2,4.5-4.5,4.5H50v17c0,2.5-2,4.5-4.5,4.5S41,70.5,41,68V51H24c-2.5,0-4.5-2-4.5-4.5
+          	s2-4.5,4.5-4.5h17V24c0-2.5,2-4.5,4.5-4.5s4.5,2,4.5,4.5v18h18C70.5,42,72.5,44,72.5,46.5z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

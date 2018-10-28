@@ -1,0 +1,134 @@
+.form-row {
+  border-left-width: 5px;
+  border-left-style: solid;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  &.black {
+    border-left-color: #000000;
+  }
+
+  &.silver {
+    border-left-color: #c0c0c0;
+  }
+
+  &.gray {
+    border-left-color: #808080;
+  }
+
+  &.white {
+    border-left-color: #fff;
+  }
+
+  &.maroon {
+    border-left-color: #800000;
+  }
+
+  &.red {
+    border-left-color: #ff0000;
+  }
+
+  &.purple {
+    border-left-color: #800080;
+  }
+
+  &.fuchsia {
+    border-left-color: #ff00ff;
+  }
+
+  &.green {
+    border-left-color: #008000;
+  }
+
+  &.lime {
+    border-left-color: #00ff00;
+  }
+
+  &.olive {
+    border-left-color: #808000;
+  }
+
+  &.yellow {
+    border-left-color: #ffff00;
+  }
+
+  &.navy {
+    border-left-color: #000080;
+  }
+
+  &.blue {
+    border-left-color: #0000ff;
+  }
+
+  &.teal {
+    border-left-color: #008080;
+  }
+
+  &.aqua {
+    border-left-color: #00ffff;
+  }
+}
+svg {
+  .black {
+    fill: #000000;
+  }
+
+  .silver {
+    fill: #c0c0c0;
+  }
+
+  .gray {
+    fill: #808080;
+  }
+
+  .white {
+    fill: #fff;
+  }
+
+  .maroon {
+    fill: #800000;
+  }
+
+  .red {
+    fill: #ff0000;
+  }
+
+  .purple {
+    fill: #800080;
+  }
+
+  .fuchsia {
+    fill: #ff00ff;
+  }
+
+  .green {
+    fill: #008000;
+  }
+
+  .lime {
+    fill: #00ff00;
+  }
+
+  .olive {
+    fill: #808000;
+  }
+
+  .yellow {
+    fill: #ffff00;
+  }
+
+  .navy {
+    fill: #000080;
+  }
+
+  .blue {
+    fill: #0000ff;
+  }
+
+  .teal {
+    fill: #008080;
+  }
+
+  .aqua {
+    fill: #00ffff;
+  }
+}
