@@ -30,9 +30,9 @@
     </div>
 
     <ng-container formArrayName="bins"
-                  *ngFor="let bin of form.get('bins').controls; index as idx">
+                  *ngFor="let bin of form.get('bins').value; index as idx">
       <div class="form-row"
-           [ngClass]="bin.get('color').value"
+           [ngClass]="bin.color"
            [formGroupName]="idx">
         <div class="col-sm-12 col-md-2">
           <label>Bredd</label>
